@@ -11,6 +11,7 @@ fi
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 zstyle ":completion:*:commands" rehash 1
+export DO_NOT_TRACK=1
 
 path=($HOME/.local/bin(N-/) $path)
 
