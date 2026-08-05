@@ -64,11 +64,7 @@ fi
 # mise (version manager) from apt repo
 if ! command -v mise &>/dev/null; then
     echo "Installing mise..."
-    sudo install -dm 755 /etc/apt/keyrings
-    curl -fSs https://mise.en.dev/gpg-key.pub | sudo tee /etc/apt/keyrings/mise-archive-keyring.asc 1> /dev/null
-    echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.en.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
-    sudo apt update -y
-    sudo apt install -y mise
+    curl https://mise.run | sh
     mise completion bash > $HOME/.local/share/bash-completion/completions/mise
     mise completion zsh > $HOME/.zfunc/_mise
 fi
@@ -80,6 +76,7 @@ echo 'if [ -f "$HOME/.config/zsh/local.zsh" ]; then
   source "$HOME/.config/zsh/local.zsh"
 fi' >> "$HOME/.zshrc.local"
 
-echo "alias p='sudo apt update ; sudo apt upgrade; rustup self-update; rustup update ; cargo install-update -a mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
+echo "alias p='sudo apt update ; sudo apt upgrade; rustup self update; rustup update ; cargo install-update -a mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
 
+echo 'include "/usr/share/nano/*.nanorc"' >> "$DOTFILES_CONFIG_DIR/../.nanorc" || true
 echo "Ubuntu setup script finished."
