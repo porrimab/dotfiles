@@ -2,7 +2,7 @@
 ZSHRC_DIR=${${(%):-%N}:A:h}
 
 # zsh-completions
-fpath=($HOME/.zfunc(N-/) $fpath)
+fpath=($HOME/.local/share/zsh/site-functions(N-/) $fpath)
 autoload -Uz compinit
 compinit
 

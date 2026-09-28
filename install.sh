@@ -79,7 +79,7 @@ if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
 fi
 
 mkdir -p $HOME/.local/share/bash-completion/completions
-mkdir -p $HOME/.zfunc
+mkdir -p $HOME/.local/share/zsh/site-functions
 
 if [ -f "$HOME/.zshrc" ]; then
     echo "Backing up existing .zshrc to .zshrc.bak"

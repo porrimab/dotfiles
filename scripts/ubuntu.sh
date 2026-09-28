@@ -34,7 +34,7 @@ fi
 
 rustup default stable
 rustup completions bash > $HOME/.local/share/bash-completion/completions/rustup
-rustup completions zsh > $HOME/.zfunc/_rustup
+rustup completions zsh > $HOME/.local/share/zsh/site-functions/_rustup
 
 mkdir -p "$HOME/.cargo/bin"
 
@@ -49,7 +49,7 @@ fi
 if ! command -v sheldon &>/dev/null; then
     cargo binstall -y sheldon || cargo install sheldon
     $HOME/.cargo/bin/sheldon completions bash > $HOME/.local/share/bash-completion/completions/sheldon
-    $HOME/.cargo/bin/sheldon completions --shell zsh > $HOME/.zfunc/_sheldon
+    $HOME/.cargo/bin/sheldon completions --shell zsh > $HOME/.local/share/zsh/site-functions/_sheldon
 fi
 
 if [[ "${INSTALL_STARSHIP:-0}" == "1" ]]; then
@@ -57,7 +57,7 @@ if [[ "${INSTALL_STARSHIP:-0}" == "1" ]]; then
         echo "Installing starship..."
         cargo binstall -y starship || cargo install starship
         $HOME/.cargo/bin/starship completions bash > $HOME/.local/share/bash-completion/completions/starship
-        $HOME/.cargo/bin/starship completions zsh > $HOME/.zfunc/_starship
+        $HOME/.cargo/bin/starship completions zsh > $HOME/.local/share/zsh/site-functions/_starship
     fi
 fi
 
@@ -65,15 +65,15 @@ fi
 if ! command -v mise &>/dev/null; then
     echo "Installing mise..."
     curl https://mise.run | sh
-    mise completion bash > $HOME/.local/share/bash-completion/completions/mise
-    mise completion zsh > $HOME/.zfunc/_mise
+    mise completion bash --install
+    mise completion zsh --install
 fi
 
 wget -O "$HOME/.zshrc"      https://grml.org/console/zshrc
 wget -O "$HOME/.zshrc.local" https://grml.org/console/zshrc.local
 
 echo 'if [ -f "$HOME/.config/zsh/local.zsh" ]; then
-  source "$HOME/.config/zsh/local.zsh"
+    source "$HOME/.config/zsh/local.zsh"
 fi' >> "$HOME/.zshrc.local"
 
 echo "alias p='sudo apt update ; sudo apt upgrade; rustup self update; rustup update ; cargo install-update -a ; mise self-update -y ; mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"

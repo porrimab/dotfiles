@@ -48,15 +48,16 @@ fi
 
 if ! command -v mise &>/dev/null; then
     curl https://mise.run | sh
-    $HOME/.local/bin/mise completion bash > $HOME/.local/share/bash-completion/completions/mise
-    $HOME/.local/bin/mise completion zsh > $HOME/.zfunc/_mise
+
+    $HOME/.local/bin/mise completion bash --install
+    $HOME/.local/bin/mise completion zsh --install
 fi
 
 wget -O "$HOME/.zshrc"      https://grml.org/console/zshrc
 wget -O "$HOME/.zshrc.local" https://grml.org/console/zshrc.local
 
 echo 'if [ -f "$HOME/.config/zsh/local.zsh" ]; then
-  source "$HOME/.config/zsh/local.zsh"
+    source "$HOME/.config/zsh/local.zsh"
 fi' >> "$HOME/.zshrc"
 
 echo "alias p='sudo pacman -Syu; paru -Sua; rustup update ; cargo install-update -a ; mise self-update -y; mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
