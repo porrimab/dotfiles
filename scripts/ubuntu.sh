@@ -76,7 +76,7 @@ echo 'if [ -f "$HOME/.config/zsh/local.zsh" ]; then
   source "$HOME/.config/zsh/local.zsh"
 fi' >> "$HOME/.zshrc.local"
 
-echo "alias p='sudo apt update ; sudo apt upgrade; rustup self update; rustup update ; cargo install-update -a mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
+echo "alias p='sudo apt update ; sudo apt upgrade; rustup self update; rustup update ; cargo install-update -a ; mise self-update -y ; mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
 
 echo 'include "/usr/share/nano/*.nanorc"' >> "$DOTFILES_CONFIG_DIR/../.nanorc" || true
 echo "Ubuntu setup script finished."

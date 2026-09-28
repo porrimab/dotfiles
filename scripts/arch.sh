@@ -59,7 +59,7 @@ echo 'if [ -f "$HOME/.config/zsh/local.zsh" ]; then
   source "$HOME/.config/zsh/local.zsh"
 fi' >> "$HOME/.zshrc"
 
-echo "alias p='sudo pacman -Syu; paru -Sua; rustup update ; cargo install-update -a ; mise self-update; mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
+echo "alias p='sudo pacman -Syu; paru -Sua; rustup update ; cargo install-update -a ; mise self-update -y; mise up'" >> "$DOTFILES_CONFIG_DIR/zsh/lazy.zsh"
 echo 'include "/usr/share/nano-syntax-highlighting/*.nanorc"' >> "$DOTFILES_CONFIG_DIR/../.nanorc" || true
 
 echo "Arch setup script finished."
